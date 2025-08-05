@@ -13,25 +13,25 @@
   - 비즈니스 로직 미포함
     - 도메인 로직을 직접 수행하지 않으며, 처리는 Application Layer에 위임
   - 계층 간 의존성 명확화
-    - Application Layer에만 의존하며, Domain/Infra에 직접 접근하지 않음
+    - Application Layer에만 의존하며, Domain/Infrastructure Layer에 직접 접근하지 않음
   - 기술 기반 책임 분리
     - Guard, Pipe, Filter, Interceptor 등을 활용하여 관심사를 분리함
 
 ### 폴더 구조
-- 필수 디렉토리 구조
+- [필수] 디렉토리 구조
   ```
   presentation/
   ├── controllers/          # 각 도메인별 HTTP 엔드포인트 정의
-  │   ├── user.controller.ts
+  │   ├── [도메인].controller.ts
   │   └── ...
   ├── dto/                  # 요청/응답 DTO 정의
   │   ├── request/
-  │   │   └── create-user.dto.ts
+  │   │   └── create-[도메인].dto.ts
   │   └── response/
-  │       └── user-response.dto.ts
+  │       └── [도메인]-response.dto.ts
   └──────
   ```
-- 선택 디렉토리 구조
+- (선택) 디렉토리 구조
   ```
   presentation/
   ├── guards/               # 인증/인가 (ex: jwt.guard.ts, roles.guard.ts)
