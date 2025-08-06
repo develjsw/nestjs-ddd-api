@@ -26,28 +26,30 @@
   ├── [도메인]/
   │   ├── service/
   │   │   └── [도메인].service.ts         # 유즈케이스 모음
-  │   └── dto/
-  │       ├── create-[도메인].dto.ts      # 입력 DTO
-  │       └── [도메인]-result.dto.ts      # 출력 DTO
+  │   ├── dto/
+  │   │   ├── create-[도메인].dto.ts      # 입력 DTO
+  │   │   └── [도메인]-result.dto.ts      # 출력 DTO
+  │   └── [도메인].application.module.ts  # NestJS 모듈: service, use-case 등 DI 등록
   └──
   ```
 - (선택) 디렉토리 구조 - **도메인 규모가 커지거나 책임 분리가 필요할 때 도입 고려**
   ```
   application/
   ├── [도메인]/
-  │   ├── use-case/                   # 유즈케이스를 기능 단위로 분리하여 단일 책임 원칙을 강화
-  │   │   └── create-[도메인].usecase.ts
-  │   │   └── update-[도메인].usecase.ts
+  │   ├── use-case/                       # 유즈케이스를 기능 단위로 분리하여 단일 책임 원칙을 강화
+  │   │   ├── create-[도메인].usecase.ts
+  │   │   ├── update-[도메인].usecase.ts
   │   │   └── get-[도메인].usecase.ts
-  │   ├── mapper/                     # DTO ↔ Entity 변환 전담 클래스
+  │   ├── mapper/                         # DTO ↔ Entity 변환 전담 클래스
   │   │   └── [도메인].mapper.ts
-  │   ├── validator/                  # Application Layer 수준의 유효성 검사
+  │   ├── validator/                      # Application Layer 수준의 유효성 검사
   │   │   └── [도메인].validator.ts
-  │   └── service/                    # UseCase들을 조합하는 Orchestrator 역할
-  │       └── [도메인].service.ts
+  │   ├── service/                        # UseCase들을 조합하는 Orchestrator 역할
+  │   │   └── [도메인].service.ts
+  │   └── [도메인].application.module.ts  # NestJS 모듈 - 유즈케이스, 서비스 DI 등록
   ├── common/
-  │   ├── base.service.ts             # 공통 유즈케이스 추상 클래스
-  │   └── exceptions/                 # Application Layer에서 사용하는 예외 정의
-  │       └── business.exception.ts
+  │   ├── base.service.ts                 # 공통 유즈케이스 추상 클래스
+  │   └── exceptions/
+  │       └── business.exception.ts       # Application Layer에서 사용하는 예외 정의
   └──
   ```

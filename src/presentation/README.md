@@ -34,12 +34,12 @@
 - (선택) 디렉토리 구조
   ```
   presentation/
-  ├── guards/               # 인증/인가 (ex: jwt.guard.ts, roles.guard.ts)
-  ├── filters/              # 예외 처리 (ex: http-exception.filter.ts)
+  ├── guards/               # 인증/인가 ( EX) jwt.guard.ts, roles.guard.ts )
+  ├── filters/              # 예외 처리 ( EX) http-exception.filter.ts )
   ├── interceptors/         # 응답 포맷팅, 로깅
   ├── pipes/                # 유효성 검사, 데이터 변환
-  ├── decorators/           # 커스텀 데코레이터 (ex: @User)
-  ├── middleware/           # 전역 미들웨어 (ex: logger.middleware.ts)
-  ├── swagger/              # Swagger 설정 (ex: swagger.config.ts)
+  ├── decorators/           # 커스텀 데코레이터 ( EX) @User )
+  ├── middleware/           # 전역 미들웨어 ( EX) logger.middleware.ts )
+  ├── swagger/              # Swagger 설정 ( EX) swagger.config.ts )
   └── tests/                # E2E 또는 Controller 테스트
   ```

@@ -29,6 +29,7 @@
   │       │   └── delete-[도메인].command.ts    # 삭제 로직
   │       └── query/
   │           └── get-[도메인].query.ts         # 조회 로직
+  │   └── [도메인].infrastructure.module.ts     # (선택) NestJS 모듈: repository 구현체 DI 등록
   ├── common/
   │   ├── db/                                    # DB 클라이언트 설정 (Prisma, TypeORM 등)
   │   │   └── prisma.service.ts
@@ -42,26 +43,27 @@
 - (선택) 디렉토리 구조 - **도메인이 커지거나 다양한 외부 시스템 및 기술 스택을 사용하는 경우**
   ```
   infrastructure/
-  ├── persistence/                              # 저장소 관련 기술 구현
+  ├── persistence/
   │   ├── db/
   │   │   ├── prisma/
   │   │   │   ├── prisma.service.ts             # Prisma 클라이언트 설정
   │   │   │   └── [도메인].prisma.repository.ts  # 도메인별 Prisma Repository
-  │   │   └── typeorm/                          # TypeORM 구현체 (선택)
+  │   │   └── typeorm/
   │   │       └── ...
   │   └── redis/
-  │       └── redis.service.ts                  # Redis 관련 유틸 (캐시, 분산락 등)
-  ├── integrations/                             # 외부 서비스 연동
+  │       └── redis.service.ts
+  ├── integrations/
   │   ├── email/
-  │   │   └── sendgrid.service.ts               # 이메일 발송 (SendGrid)
+  │   │   └── sendgrid.service.ts
   │   ├── sms/
-  │   │   └── naver-sens.service.ts             # SMS 발송 (Naver SENS)
+  │   │   └── naver-sens.service.ts
   │   └── payment/
-  │       └── toss-pay.service.ts               # 결제 시스템 연동 (Toss 등)
-  └── shared/                                   # 공통 유틸리티 및 설정
-  ├── logger/                                   # 로깅 유틸
-  ├── exception/                                # 공통 예외 처리
-  └── config/                                   # 환경 설정 모듈
+  │       └── toss-pay.service.ts
+  └── shared/                                  # 공통 유틸리티 및 설정
+  │   ├── logger/
+  │   ├── exception/
+  │   └── config/
+  └── [도메인].infrastructure.module.ts         # (선택) 외부 연동 또는 기술 구현체 묶는 모듈
   ```
   
 ### 주의사항
