@@ -26,9 +26,15 @@
   │   └── ...
   ├── dto/                  # 요청/응답 DTO 정의
   │   ├── request/
-  │   │   └── create-[도메인].dto.ts
+  │   │   └── create-[도메인]-request.dto.ts
+  │   │   └── update-[도메인]-request.dto.ts
+  │   │   └── get-[도메인]-request.dto.ts
+  │   │   └── login-request.dto.ts
+  │   │   └── change-password-request.dto.ts
   │   └── response/
-  │       └── [도메인]-response.dto.ts
+  │       └── [도메인]-detail-response.dto.ts
+  │       └── [도메인]-list-response.dto.ts
+  │       └── login-response.dto.ts
   └──────
   ```
 - (선택) 디렉토리 구조
