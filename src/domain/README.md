@@ -25,36 +25,32 @@
 - [필수] 디렉토리 구조
   ```
   domain/
-  ├── [도메인]/
-  │   ├── entity/
-  │   │   └── [도메인].entity.ts              # Entity: 식별자(PK)를 가지며, 상태/행위를 포함하는 핵심 비즈니스 객체
-  │   ├── interface/
-  │   │   └── [도메인]-repository.interface.ts # Repository 인터페이스 (Persistence 추상화 전용, 구현 없음)
-  │   ├── value-object/
-  │   │   └── [도메인]-name.vo.ts             # Value Object: 불변 객체, 값 자체로 동등성 판단 ( EX) 이름, 주소, 이메일 등 )
-  └──
+  ├── entity/
+  │   └── [도메인].entity.ts              # Entity: 식별자(PK)를 가지며, 상태/행위를 포함하는 핵심 비즈니스 객체
+  ├── interface/
+  │   └── [도메인]-repository.interface.ts # Repository 인터페이스 (Persistence 추상화 전용, 구현 없음)
+  ├── value-object/
+  │   └── [도메인]-name.vo.ts             # Value Object: 불변 객체, 값 자체로 동등성 판단 ( EX) 이름, 주소, 이메일 등 )
   ```
 - (선택) 디렉토리 구조 – 복잡한 도메인 로직이나 확장이 필요할 때 도입 고려
   ```
   domain/
-  ├── [도메인]/
-  │   ├── entity/
-  │   │   └── [도메인].entity.ts
-  │   ├── interface/
-  │   │   └── [도메인]-repository.interface.ts
-  │   ├── value-object/
-  │   │   └── [도메인]-name.vo.ts             # VO는 반드시 필요한 것은 아니며, "해당 필드가 비즈니스적으로 의미가 있는가?"가 도입 판단 기준
-  │   ├── service/                           # 도메인 서비스: 두 개 이상의 Entity 간 협력 또는 외부 정책 의존 로직을 처리
-  │   │   └── [도메인].service.ts
-  │   ├── event/                             # 도메인 이벤트: 상태 변화에 따른 후속 처리 트리거 ( EX) OrderCreated )
-  │   │   └── [도메인]-created.event.ts
-  │   ├── exception/                         # 도메인 전용 예외: 유효하지 않은 상태에 대한 명확한 표현
-  │   │   └── invalid-[도메인].exception.ts
-  │   └── policy/                            # 정책 객체: 전략 패턴 기반의 유연한 도메인 정책 구성 ( EX) 할인 정책, 포인트 적립 기준 등 )
-  │       └── [도메인].policy.ts
+  ├── entity/
+  │   └── [도메인].entity.ts
+  ├── interface/
+  │   └── [도메인]-repository.interface.ts
+  ├── value-object/
+  │   └── [도메인]-name.vo.ts             # VO는 반드시 필요한 것은 아니며, "해당 필드가 비즈니스적으로 의미가 있는가?"가 도입 판단 기준
+  ├── service/                           # 도메인 서비스: 두 개 이상의 Entity 간 협력 또는 외부 정책 의존 로직을 처리
+  │   └── [도메인].service.ts
+  ├── event/                             # 도메인 이벤트: 상태 변화에 따른 후속 처리 트리거 ( EX) OrderCreated )
+  │   └── [도메인]-created.event.ts
+  ├── exception/                         # 도메인 전용 예외: 유효하지 않은 상태에 대한 명확한 표현
+  │   └── invalid-[도메인].exception.ts
   ├── common/
-  │   ├── base.entity.ts                    # 공통 Entity 추상 클래스 ( EX) ID getter, 동등성 판단 등 )
-  │   ├── base.vo.ts                        # 공통 VO 추상 클래스 ( EX) equals, validate 등 )
-  │   └── domain.types.ts                   # 도메인 전역 enum, 타입 정의 ( EX) Role, Status 등 )
-  └──
+  │   ├── base.entity.ts                 # 공통 Entity 추상 클래스 ( EX) ID getter, 동등성 판단 등 )
+  │   ├── base.vo.ts                     # 공통 VO 추상 클래스 ( EX) equals, validate 등 )
+  │   └── domain.types.ts                # 도메인 전역 enum, 타입 정의 ( EX) Role, Status 등 )   
+  └── policy/                            # 정책 객체: 전략 패턴 기반의 유연한 도메인 정책 구성 ( EX) 할인 정책, 포인트 적립 기준 등 )
+      └── [도메인].policy.ts
   ```

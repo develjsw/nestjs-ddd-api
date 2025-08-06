@@ -21,49 +21,53 @@
 - [필수] 디렉토리 구조 - 작고 단순한 도메인 또는 초기 프로젝트에 적합
   ```
   infrastructure/
-  ├── [도메인]/
-  │   └── repository/
-  │       ├── command/
-  │       │   ├── create-[도메인].command.ts    # 저장 로직
-  │       │   ├── update-[도메인].command.ts    # 수정 로직
-  │       │   └── delete-[도메인].command.ts    # 삭제 로직
-  │       └── query/
-  │           └── get-[도메인].query.ts         # 조회 로직
-  │   └── [도메인].infrastructure.module.ts     # (선택) NestJS 모듈: repository 구현체 DI 등록
-  ├── common/
-  │   ├── db/                                    # DB 클라이언트 설정 (Prisma, TypeORM 등)
-  │   │   └── prisma.service.ts
-  │   ├── cache/                                 # 캐시 연동 (Redis 등)
-  │   │   └── redis.service.ts
-  │   ├── external/                              # 외부 API 연동
-  │   │   └── email.service.ts
-  │   └── logger/                                # 로깅 처리
-  │       └── winston.logger.ts
+  ├── repository/
+  │   ├── command/
+  │   │   ├── create-[도메인].command.ts     # 저장 로직
+  │   │   ├── update-[도메인].command.ts     # 수정 로직
+  │   │   └── delete-[도메인].command.ts     # 삭제 로직
+  │   └── query/
+  │       └── get-[도메인].query.ts          # 조회 로직
+  ├── [도메인].infrastructure.module.ts      # (선택) NestJS 모듈: repository 구현체 DI 등록
+  ├── common/                                 # 공통 기술 리소스
+  │   ├── db/
+  │   │   └── prisma.service.ts              # DB 클라이언트 설정
+  │   ├── cache/
+  │   │   └── redis.service.ts               # Redis 연동
+  │   ├── external/
+  │   │   └── email.service.ts               # 외부 API 연동
+  │   └── logger/
+  │       └── winston.logger.ts              # 로깅 처리
   ```
 - (선택) 디렉토리 구조 - **도메인이 커지거나 다양한 외부 시스템 및 기술 스택을 사용하는 경우**
   ```
   infrastructure/
-  ├── persistence/
+  ├── persistence/                             # 저장소 관련 기술 구현
   │   ├── db/
   │   │   ├── prisma/
-  │   │   │   ├── prisma.service.ts             # Prisma 클라이언트 설정
-  │   │   │   └── [도메인].prisma.repository.ts  # 도메인별 Prisma Repository
+  │   │   │   ├── prisma.service.ts
+  │   │   │   └── [도메인].prisma.repository.ts
   │   │   └── typeorm/
   │   │       └── ...
   │   └── redis/
   │       └── redis.service.ts
-  ├── integrations/
+  ├── integrations/                            # 외부 서비스 연동
   │   ├── email/
   │   │   └── sendgrid.service.ts
   │   ├── sms/
   │   │   └── naver-sens.service.ts
   │   └── payment/
   │       └── toss-pay.service.ts
-  └── shared/                                  # 공통 유틸리티 및 설정
+  ├── shared/                                   # 공통 설정/유틸
   │   ├── logger/
   │   ├── exception/
   │   └── config/
-  └── [도메인].infrastructure.module.ts         # (선택) 외부 연동 또는 기술 구현체 묶는 모듈
+  ├── common/                                   # 공통 기술 유틸리티 (persistence/integ. 외)
+  │   ├── db/
+  │   ├── cache/
+  │   ├── external/
+  │   └── logger/
+  └── [도메인].infrastructure.module.ts         # (선택) 인프라 기술 묶는 DI 모듈
   ```
   
 ### 주의사항
