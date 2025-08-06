@@ -67,7 +67,7 @@
   │   ├── cache/
   │   ├── external/
   │   └── logger/
-  └── [도메인].infrastructure.module.ts         # (선택) 인프라 기술 묶는 DI 모듈
+  └── [도메인].infrastructure-module.ts         # (선택) 인프라 기술 묶는 DI 모듈
   ```
   
 ### 주의사항

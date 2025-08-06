@@ -47,5 +47,5 @@
   │   ├── base.service.ts             # 공통 유즈케이스 추상 클래스
   │   └── exceptions/
   │       └── business.exception.ts   # Application Layer에서 사용하는 예외 정의
-  └── [도메인].application.module.ts   # NestJS 모듈 - 유즈케이스, 서비스 DI 등록
+  └── [도메인].application-module.ts   # NestJS 모듈 - 유즈케이스, 서비스 DI 등록
   ```
