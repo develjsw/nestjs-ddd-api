@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("TODO_DATABASE_URL")
+}
+
+model category {
+  category_id Int @id @default(autoincrement()) @db.UnsignedInt
+}
+
+model notification {
+  notification_id Int @id @default(autoincrement()) @db.UnsignedInt
+}
+
+model task {
+  task_id Int @id @default(autoincrement()) @db.UnsignedInt
+}
+
+model user {
+  user_id Int @id @default(autoincrement()) @db.UnsignedInt
+}
