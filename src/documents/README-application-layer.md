@@ -41,6 +41,9 @@
   │   └── [도메인].mapper.ts
   ├── validator/                      # Application Layer 수준의 유효성 검사
   │   └── [도메인].validator.ts
+  ├── dto/
+  │   ├── create-[도메인].dto.ts       # 입력 DTO
+  │   └── [도메인]-result.dto.ts       # 출력 DTO
   ├── service/                        # UseCase들을 조합하는 Orchestrator 역할
   │   └── [도메인].service.ts
   ├── common/
