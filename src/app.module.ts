@@ -14,7 +14,7 @@ import { CategoryModule } from './module/category/category.module';
         }),
         AppConfigModule,
         DatabaseModule,
-        CategoryModule
+        CategoryModule.forRoot()
     ],
     controllers: [AppController],
     providers: [AppService]
